@@ -10,7 +10,7 @@ Captain America: &captain_america
   - Captain America.+?Civil War
 Captain Marvel: &captain_marvel
   - Captain Marvel
-Deadpool Collection: &deadpool
+Deadpool: &deadpool
   - ^Deadpool( [0-3])?$
   - ^Once Upon a Deadpool
   - ^X-Force
