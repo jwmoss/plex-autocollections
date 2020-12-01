@@ -34,6 +34,8 @@ Cars:
 Child's Play:
   - ^Child.*?s Play( \d)?$
   - ^(Bride|Seed|Curse|Cult) of Chucky$
+Creed:
+  - ^Creed( I{1,3})?$
 DC Extended Universe:
   - ^Aquaman( \d)?$
   - ^Man of Steel
@@ -124,7 +126,6 @@ Resident Evil:
   - ^Resident Evil.+?(Apocalypse|Extinction|Afterlife|Retribution|The Final Chapter)
 Rocky:
   - ^Rocky(( I{0,3}V?)| Balboa)?$
-  - ^Creed( I{1,3})?$
 Saw:
   - ^Saw$
   - ^Saw (I{2,3}|IV|V|VI|[2-3])?$
