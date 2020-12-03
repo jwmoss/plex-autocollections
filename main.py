@@ -8,10 +8,6 @@ from plexapi.exceptions import BadRequest
 import yaml
 import glob, os, argparse
 
-## Edit ##
-PLEX_URL = ''
-PLEX_TOKEN = ''
-
 DEBUG = os.getenv('DEBUG')
 RESET_COLOR = '\033[0m'  # reset to default text color
 RED         = '\033[31m' # set text color to red
@@ -19,10 +15,11 @@ GREEN       = '\033[32m' # set text color to green
 BLUE        = '\033[34m' # set text color to blue
 
 try:
-    PLEX_URL = CONFIG.data['auth'].get('server_baseurl', PLEX_URL)
-    PLEX_TOKEN = CONFIG.data['auth'].get('server_token', PLEX_TOKEN)
+    PLEX_URL = os.getenv('URL')
+    PLEX_TOKEN = os.getenv('TOKEN')
+    LIBRARY = os.getenv('LIBRARY')
 except:
-    print("Failed loading in config file.")
+    print("Failed loading in environment variables.")
 
 class Plex():
     def __init__(self, library=""):
@@ -58,12 +55,7 @@ class Plex():
         return plexapi.utils.choose('Select server index', servers, 'name').connect()
 
     def get_server_section(self, server):
-        sections = [ _ for _ in server.library.sections() if _.type in {'movie'} ]
-        if not sections:
-            print('No available sections.')
-            sys.exit()
-
-        return plexapi.utils.choose('Select section index', sections, 'title')
+        return server.library.section(title=LIBRARY)
 
     def get_flat_media(self, section):
         # Movie sections are already flat
